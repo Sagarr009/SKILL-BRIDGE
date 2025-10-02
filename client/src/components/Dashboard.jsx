@@ -197,8 +197,8 @@ function Dashboard() {
 
     const fetchRequests = async () => {
       try {
-        const sent = await axios.get(`http://localhost:5000/api/match/sent/${userId}`);
-        const received = await axios.get(`http://localhost:5000/api/match/received/${userId}`);
+        const sent = await axios.get(`https://skill-bridge-back.onrender.com/api/match/sent/${userId}`);
+        const received = await axios.get(`https://skill-bridge-back.onrender.com/api/match/received/${userId}`);
         setSentRequests(sent.data);
         setReceivedRequests(received.data);
       } catch (err) {
@@ -211,12 +211,12 @@ function Dashboard() {
 
   const respondToRequest = async (requestId, action) => {
     try {
-      await axios.put(`http://localhost:5000/api/match/respond/${requestId}`, {
+      await axios.put(`https://skill-bridge-back.onrender.com/api/match/respond/${requestId}`, {
         status: action,
       });
       alert(`Request ${action}ed successfully!`);
 
-      const updated = await axios.get(`http://localhost:5000/api/match/received/${userId}`);
+      const updated = await axios.get(`https://skill-bridge-back.onrender.com/api/match/received/${userId}`);
       setReceivedRequests(updated.data);
     } catch (err) {
       console.error(`❌ Failed to ${action} request:`, err);
