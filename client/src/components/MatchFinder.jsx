@@ -104,7 +104,7 @@ const MatchFinder = () => {
   const handleSearch = async () => {
     if (!skill.trim()) return alert('Please enter a skill');
     try {
-      const res = await axios.post('http://localhost:5000/api/users/match', { skill: skill.trim() });
+      const res = await axios.post('https://skill-bridge-back.onrender.com/api/users/match', { skill: skill.trim() });
       setMatches(res.data);
     } catch (err) {
       alert('Error finding matches');
@@ -116,7 +116,7 @@ const MatchFinder = () => {
     const fromUserId = user?._id;
     if (!fromUserId) return alert('You must be logged in');
     try {
-      await axios.post('http://localhost:5000/api/match/send-request', {
+      await axios.post('https://skill-bridge-back.onrender.com/api/match/send-request', {
         fromUserId, toUserId, skill: skill.trim(),
       });
       alert('Request sent!');
