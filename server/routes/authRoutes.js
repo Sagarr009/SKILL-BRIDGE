@@ -278,7 +278,7 @@ router.post('/forgot-password', async (req, res) => {
     const resetToken = jwt.sign({ id: user._id }, JWT_SECRET, { expiresIn: '15m' });
 
     // 👉 update to your deployed frontend URL
-    const resetLink = `http://localhost:3000/reset-password/${resetToken}`;
+    const resetLink = `https://skill-bridge-front.onrender.com/reset-password/${resetToken}`;
 
     // ✅ send email using mailer.js
     await sendEmail(
